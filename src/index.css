@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+:root {
+  background-color: #050505;
+  color: #ffffff;
+  color-scheme: dark;
+}
+
+@theme {
+  --color-cyber-black: #050505;
+  --color-cyber-red: #ff2a2a;
+  --color-cyber-cyan: #00ffcc;
+  --color-cyber-dark: #0a0a0a;
+  --color-cyber-gray: #1a1a1a;
+  --color-cyber-grid: #1f1f1f;
+
+  --font-display: 'Ma Shan Zheng', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --background-image-cyber-grid: linear-gradient(to right, #1f1f1f 1px, transparent 1px), linear-gradient(to bottom, #1f1f1f 1px, transparent 1px);
+
+  /* 自定义断点 - xs 用于超小屏幕 */
+  --breakpoint-xs: 375px;
+}
+
+body {
+  @apply bg-cyber-black text-white antialiased overflow-x-hidden;
+  /* 移动端优化 */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* 移动端安全区域适配 */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Custom Utilities */
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 10px rgba(255, 42, 42, 0.5);
+}
+
+.bg-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, #1f1f1f 1px, transparent 1px), linear-gradient(to bottom, #1f1f1f 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+/* 移动端响应式网格背景 */
+@media (max-width: 640px) {
+  .bg-grid {
+    background-size: 30px 30px;
+  }
+}
+
+/* 优化移动端滚动 */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 移动端输入框优化 - 防止iOS缩放 */
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  font-size: 16px;
+}
+
+/* 禁用移动端文本选择闪烁 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
